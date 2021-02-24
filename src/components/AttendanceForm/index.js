@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, Form, Container, Header } from "semantic-ui-react";
+import axios from "axios";
 
 class AttendanceForm extends Component {
 
@@ -23,7 +24,11 @@ class AttendanceForm extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        console.log(this.state);
+
+        axios.post('https://sheet.best/api/sheets/58ada64d-79d4-4596-8b0a-2d6e76fcdaf3', this.state)
+        .then(response => {
+            console.log(response);
+        })
     }
 
     render() {
