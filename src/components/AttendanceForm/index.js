@@ -32,7 +32,7 @@ class AttendanceForm extends Component {
 
         return (
             <Container fluid className="container">
-                <Header as="h2">React Google Sheets!</Header>
+                <Header as="h2">{"Wedding Guest List"}</Header>
                     <Form className="form" onSubmit={ this.handleSubmit }>
                         <Form.Field>
                             <label>{"Attending the wedding?"}</label>
