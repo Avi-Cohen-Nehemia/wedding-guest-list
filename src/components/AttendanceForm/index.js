@@ -18,8 +18,11 @@ class AttendanceForm extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange(e) {
-        this.setState({ [e.target.name] : e.target.value} )
+    handleChange(e, input) {
+        let value = e.currentTarget.value;
+        console.log(e.currentTarget);
+
+        this.setState({ [input]: value })
     }
 
     handleSubmit(e) {
@@ -41,35 +44,50 @@ class AttendanceForm extends Component {
                     <Form className="form" onSubmit={ this.handleSubmit }>
                         <Form.Field>
                             <label>{"Attending the wedding?"}</label>
-                            <input placeholder="Attending the wedding?"
-                            name="attending"
-                            value={ attending }
-                            onChange={ this.handleChange }/>
+                            <select
+                                required
+                                onChange={ (e) => this.handleChange(e, "attending")
+                            }>
+                                <option value="yes">{"Yes"}</option>
+                                <option value="no">{"No"}</option>
+                            </select>
                         </Form.Field>
 
                         <Form.Field>
                             <label>{"Full Name"}</label>
-                            <input placeholder="Enter your name" name="name" value={ name } onChange={ this.handleChange }/>
+                            <input
+                                disabled={ attending === "no" }
+                                placeholder="Enter your name"
+                                value={ name }
+                                onChange={ (e) => this.handleChange(e, "name") }
+                                type="text"
+                                required={ attending === "yes" }
+                            />
                         </Form.Field>
 
                         <Form.Field>
                             <label>{"Number of adults"}</label>
                             <input
+                                disabled={ attending === "no" }
                                 placeholder="Enter your age"
-                                name="adults"
                                 value={ adults }
-                                onChange={ this.handleChange }/>
+                                onChange={ (e) => this.handleChange(e, "adults") }
+                                required={ attending === "yes" }
+                            />
                         </Form.Field>
 
                         <Form.Field>
                             <label>{"Number of children"}</label>
-                            <input placeholder="Enter your salary"
-                            name="children"
-                            value={ children }
-                            onChange={ this.handleChange }/>
+                            <input
+                                disabled={ attending === "no" }
+                                placeholder="Enter your salary"
+                                value={ children }
+                                onChange={ (e) => this.handleChange(e, "children") }
+                                required={ attending === "yes" }
+                            />
                         </Form.Field>
 
-                        <Button color="blue" type="submit">{"Submit"}</Button>
+                        <Button primary type="submit">{"Submit"}</Button>
                     </Form>
             </Container>
         )
