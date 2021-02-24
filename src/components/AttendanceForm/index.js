@@ -8,7 +8,7 @@ class AttendanceForm extends Component {
         super(props)
       
         this.state = {
-            attending: true,
+            attending: "yes",
             name: "",
             adults: 0,
             children: 0,
@@ -20,7 +20,6 @@ class AttendanceForm extends Component {
 
     handleChange(e, input) {
         let value = e.currentTarget.value;
-        console.log(e.currentTarget);
 
         this.setState({ [input]: value })
     }
@@ -43,6 +42,17 @@ class AttendanceForm extends Component {
                 <Header as="h2">{"Wedding Guest List"}</Header>
                     <Form className="form" onSubmit={ this.handleSubmit }>
                         <Form.Field>
+                            <label>{"Full Name"}</label>
+                            <input
+                                placeholder="Enter your name"
+                                value={ name }
+                                onChange={ (e) => this.handleChange(e, "name") }
+                                type="text"
+                                required
+                            />
+                        </Form.Field>
+
+                        <Form.Field>
                             <label>{"Attending the wedding?"}</label>
                             <select
                                 required
@@ -51,18 +61,6 @@ class AttendanceForm extends Component {
                                 <option value="yes">{"Yes"}</option>
                                 <option value="no">{"No"}</option>
                             </select>
-                        </Form.Field>
-
-                        <Form.Field>
-                            <label>{"Full Name"}</label>
-                            <input
-                                disabled={ attending === "no" }
-                                placeholder="Enter your name"
-                                value={ name }
-                                onChange={ (e) => this.handleChange(e, "name") }
-                                type="text"
-                                required={ attending === "yes" }
-                            />
                         </Form.Field>
 
                         <Form.Field>
