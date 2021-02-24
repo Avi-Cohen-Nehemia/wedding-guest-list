@@ -10,8 +10,8 @@ class AttendanceForm extends Component {
         this.state = {
             attending: "yes",
             name: "",
-            adults: 0,
-            children: 0,
+            adults: "0",
+            children: "0",
         }
 
         this.handleChange = this.handleChange.bind(this);
