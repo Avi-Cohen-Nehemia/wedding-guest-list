@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Header, Table, Form } from "semantic-ui-react";
+import { Container, Header, Table, Form, Button } from "semantic-ui-react";
 import axios from "axios";
 
 class AttendanceForm extends Component {
@@ -9,10 +9,12 @@ class AttendanceForm extends Component {
       
         this.state = {
             guestList: [],
-            password: ""
+            password: "",
+            correctPassword: false
         }
 
         this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount() {
@@ -28,14 +30,20 @@ class AttendanceForm extends Component {
         this.setState({ [input]: value })
     }
 
+    handleSubmit() {
+        if (this.state.password === "dcn0359") {
+            this.setState({ correctPassword: true })
+        }
+    }
+
     render() {
 
-        const { guestList, password } = this.state;
+        const { guestList, password, correctPassword } = this.state;
 
         return (
             <Container fluid className="container">
                 <Header as="h2">{"Wedding Guest List"}</Header>
-                { password === "dcn0359" ?
+                { correctPassword ?
                     <>
                         <Table celled>
                             <Table.Header>
@@ -85,7 +93,7 @@ class AttendanceForm extends Component {
                             </Table.Body>
                         </Table> 
                     </> :
-                    <Form className="form">
+                    <Form className="form" onSubmit={ this.handleSubmit }>
                         <Form.Field>
                             <label>{"Password"}</label>
                             <input
@@ -95,6 +103,7 @@ class AttendanceForm extends Component {
                                 type="password"
                             />
                         </Form.Field>
+                        <Button primary type="submit">{"Submit"}</Button>
                     </Form>
                 }
             </Container>
