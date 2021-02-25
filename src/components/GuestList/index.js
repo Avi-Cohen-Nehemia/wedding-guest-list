@@ -32,9 +32,10 @@ class AttendanceForm extends Component {
                 <Table celled>
                     <Table.Header>
                         <Table.Row>
-                            <Table.HeaderCell>Name</Table.HeaderCell>
-                            <Table.HeaderCell>Status</Table.HeaderCell>
-                            <Table.HeaderCell>Notes</Table.HeaderCell>
+                            <Table.HeaderCell>{"Name"}</Table.HeaderCell>
+                            <Table.HeaderCell>{"Attending"}</Table.HeaderCell>
+                            <Table.HeaderCell>{"Adults"}</Table.HeaderCell>
+                            <Table.HeaderCell>{"Children"}</Table.HeaderCell>
                         </Table.Row>
                     </Table.Header>
 
