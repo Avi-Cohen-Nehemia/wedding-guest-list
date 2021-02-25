@@ -36,6 +36,7 @@ class AttendanceForm extends Component {
     render() {
 
         const { attending, name, adults, children } = this.state;
+        const options = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
         return (
             <Container fluid className="container">
@@ -65,24 +66,42 @@ class AttendanceForm extends Component {
 
                         <Form.Field>
                             <label>{"Number of adults"}</label>
-                            <input
+                            <select
                                 disabled={ attending === "no" }
                                 placeholder="Enter your age"
                                 value={ adults }
                                 onChange={ (e) => this.handleChange(e, "adults") }
                                 required={ attending === "yes" }
-                            />
+                            >
+                                { options.map((num, index) => (
+                                    <option
+                                        value={`${num}`}
+                                        key={index}
+                                    >
+                                        {`${num}`}
+                                    </option>
+                                ))}
+                            </select>
                         </Form.Field>
 
                         <Form.Field>
                             <label>{"Number of children"}</label>
-                            <input
+                            <select
                                 disabled={ attending === "no" }
-                                placeholder="Enter your salary"
+                                placeholder="Enter your age"
                                 value={ children }
                                 onChange={ (e) => this.handleChange(e, "children") }
                                 required={ attending === "yes" }
-                            />
+                            >
+                                { options.map((num, index) => (
+                                    <option
+                                        value={`${num}`}
+                                        key={index}
+                                    >
+                                        {`${num}`}
+                                    </option>
+                                ))}
+                            </select>
                         </Form.Field>
 
                         <Button primary type="submit">{"Submit"}</Button>
