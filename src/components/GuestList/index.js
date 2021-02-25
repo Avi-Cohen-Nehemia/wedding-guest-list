@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Header, Table } from "semantic-ui-react";
+import { Container, Header, Table, Form } from "semantic-ui-react";
 import axios from "axios";
 
 class AttendanceForm extends Component {
@@ -11,6 +11,8 @@ class AttendanceForm extends Component {
             guestList: [],
             password: ""
         }
+
+        this.handleChange = this.handleChange.bind(this);
     }
 
     componentDidMount() {
@@ -20,60 +22,81 @@ class AttendanceForm extends Component {
         })
     }
 
+    handleChange(e, input) {
+        let value = e.currentTarget.value;
+
+        this.setState({ [input]: value })
+    }
+
     render() {
 
-        const { guestList } = this.state;
+        const { guestList, password } = this.state;
 
         return (
             <Container fluid className="container">
                 <Header as="h2">{"Wedding Guest List"}</Header>
-                <Table celled>
-                    <Table.Header>
-                        <Table.Row>
-                            <Table.HeaderCell>{"Name"}</Table.HeaderCell>
-                            <Table.HeaderCell>{"Attending"}</Table.HeaderCell>
-                            <Table.HeaderCell>{"Adults"}</Table.HeaderCell>
-                            <Table.HeaderCell>{"Children"}</Table.HeaderCell>
-                        </Table.Row>
-                    </Table.Header>
+                { password === "dcn0359" ?
+                    <>
+                        <Table celled>
+                            <Table.Header>
+                                <Table.Row>
+                                    <Table.HeaderCell>{"Name"}</Table.HeaderCell>
+                                    <Table.HeaderCell>{"Attending"}</Table.HeaderCell>
+                                    <Table.HeaderCell>{"Adults"}</Table.HeaderCell>
+                                    <Table.HeaderCell>{"Children"}</Table.HeaderCell>
+                                </Table.Row>
+                            </Table.Header>
 
-                    <Table.Body>
-                        {guestList.map((family, index) =>
-                            <Table.Row
-                                negative={family.attending === "no"}
-                                key={ index }
-                            >
-                                <Table.Cell>{ family.name }</Table.Cell>
-                                <Table.Cell>{ family.attending }</Table.Cell>
-                                <Table.Cell>{ family.adults }</Table.Cell>
-                                <Table.Cell>{ family.children }</Table.Cell>
-                            </Table.Row>
-                        )}
-                    </Table.Body>
-                </Table>
-                <Table celled>
-                    <Table.Header>
-                        <Table.Row>
-                            <Table.HeaderCell>{"Total Adults"}</Table.HeaderCell>
-                            <Table.HeaderCell>{"Total Children"}</Table.HeaderCell>
-                        </Table.Row>
-                    </Table.Header>
+                            <Table.Body>
+                                {guestList.map((family, index) =>
+                                    <Table.Row
+                                        negative={family.attending === "no"}
+                                        key={ index }
+                                    >
+                                        <Table.Cell>{ family.name }</Table.Cell>
+                                        <Table.Cell>{ family.attending }</Table.Cell>
+                                        <Table.Cell>{ family.adults }</Table.Cell>
+                                        <Table.Cell>{ family.children }</Table.Cell>
+                                    </Table.Row>
+                                )}
+                            </Table.Body>
+                        </Table>
+                        <Table celled>
+                            <Table.Header>
+                                <Table.Row>
+                                    <Table.HeaderCell>{"Total Adults"}</Table.HeaderCell>
+                                    <Table.HeaderCell>{"Total Children"}</Table.HeaderCell>
+                                </Table.Row>
+                            </Table.Header>
 
-                    <Table.Body>
-                        <Table.Row>
-                            <Table.Cell>
-                                { guestList.reduce((acc, family) => {
-                                    return acc + parseFloat(family.adults);
-                                }, 0)}
-                            </Table.Cell>
-                            <Table.Cell>
-                                { guestList.reduce((acc, family) => {
-                                    return acc + parseFloat(family.children);
-                                }, 0)}
-                            </Table.Cell>
-                        </Table.Row>
-                    </Table.Body>
-                </Table>
+                            <Table.Body>
+                                <Table.Row>
+                                    <Table.Cell>
+                                        { guestList.reduce((acc, family) => {
+                                            return acc + parseFloat(family.adults);
+                                        }, 0)}
+                                    </Table.Cell>
+                                    <Table.Cell>
+                                        { guestList.reduce((acc, family) => {
+                                            return acc + parseFloat(family.children);
+                                        }, 0)}
+                                    </Table.Cell>
+                                </Table.Row>
+                            </Table.Body>
+                        </Table> 
+                    </> :
+                    <Form className="form">
+                        <Form.Field>
+                            <label>{"Password"}</label>
+                            <input
+                                placeholder="Enter password"
+                                value={ password }
+                                onChange={ (e) => this.handleChange(e, "password") }
+                                type="password"
+                            />
+                        </Form.Field>
+                    </Form>
+                }
             </Container>
         )
     }
