@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Header, Icon, Table } from "semantic-ui-react";
+import { Container, Header, Table } from "semantic-ui-react";
 import axios from "axios";
 
 class AttendanceForm extends Component {
@@ -8,17 +8,15 @@ class AttendanceForm extends Component {
         super(props)
       
         this.state = {
-            guestList: []
+            guestList: [],
+            password: ""
         }
-
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount() {
         axios.get('https://sheet.best/api/sheets/58ada64d-79d4-4596-8b0a-2d6e76fcdaf3')
         .then((response) => {
-            console.log(response);
+            this.setState({ guestList: response.data })
         })
     }
 
@@ -40,31 +38,39 @@ class AttendanceForm extends Component {
                     </Table.Header>
 
                     <Table.Body>
+                        {guestList.map((family, index) =>
+                            <Table.Row
+                                negative={family.attending === "no"}
+                                key={ index }
+                            >
+                                <Table.Cell>{ family.name }</Table.Cell>
+                                <Table.Cell>{ family.attending }</Table.Cell>
+                                <Table.Cell>{ family.adults }</Table.Cell>
+                                <Table.Cell>{ family.children }</Table.Cell>
+                            </Table.Row>
+                        )}
+                    </Table.Body>
+                </Table>
+                <Table celled>
+                    <Table.Header>
                         <Table.Row>
-                            <Table.Cell>No Name Specified</Table.Cell>
-                            <Table.Cell>Unknown</Table.Cell>
-                            <Table.Cell negative>None</Table.Cell>
+                            <Table.HeaderCell>{"Total Adults"}</Table.HeaderCell>
+                            <Table.HeaderCell>{"Total Children"}</Table.HeaderCell>
                         </Table.Row>
-                        <Table.Row positive>
-                            <Table.Cell>Jimmy</Table.Cell>
+                    </Table.Header>
+
+                    <Table.Body>
+                        <Table.Row>
                             <Table.Cell>
-                            <Icon name='checkmark' />
-                            Approved
+                                { guestList.reduce((acc, family) => {
+                                    return acc + parseFloat(family.adults);
+                                }, 0)}
                             </Table.Cell>
-                            <Table.Cell>None</Table.Cell>
-                        </Table.Row>
-                        <Table.Row>
-                            <Table.Cell>Jamie</Table.Cell>
-                            <Table.Cell>Unknown</Table.Cell>
-                            <Table.Cell positive>
-                            <Icon name='close' />
-                            Requires call
+                            <Table.Cell>
+                                { guestList.reduce((acc, family) => {
+                                    return acc + parseFloat(family.children);
+                                }, 0)}
                             </Table.Cell>
-                        </Table.Row>
-                        <Table.Row negative>
-                            <Table.Cell>Jill</Table.Cell>
-                            <Table.Cell>Unknown</Table.Cell>
-                            <Table.Cell>None</Table.Cell>
                         </Table.Row>
                     </Table.Body>
                 </Table>
