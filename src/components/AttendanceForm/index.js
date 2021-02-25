@@ -39,7 +39,7 @@ class AttendanceForm extends Component {
 
         return (
             <Container fluid className="container">
-                <Header as="h2">{"Wedding Guest List"}</Header>
+                <Header as="h2">{"Wedding Registration Form"}</Header>
                     <Form className="form" onSubmit={ this.handleSubmit }>
                         <Form.Field>
                             <label>{"Full Name"}</label>
