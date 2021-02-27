@@ -54,7 +54,7 @@ class AttendanceForm extends Component {
                         onClick={() => scroll.scrollToBottom({duration: 2500, smooth: 'easeInOutQuad'})}
                         style={{fontSize: "1.2rem"}}
                     >
-                        {"Register"}
+                        {"לאישור הגעה"}
                     </Button>
                 </section>
                 <section>
@@ -64,7 +64,7 @@ class AttendanceForm extends Component {
                                 color: "rgba(255, 255, 255, 0.85)",
                                 fontSize: "1.5rem"
                             }}>
-                                {"Full Name"}
+                                {"שם מלא"}
                             </label>
                             <input
                                 placeholder="Enter your name"
@@ -81,14 +81,14 @@ class AttendanceForm extends Component {
                                 color: "rgba(255, 255, 255, 0.85)",
                                 fontSize: "1.5rem"
                             }}>
-                                {"Attending the wedding?"}
+                                {"באים לחתונה?"}
                             </label>
                             <select
                                 required
                                 onChange={ (e) => this.handleChange(e, "attending")}
                             >
-                                <option value="yes">{"Yes"}</option>
-                                <option value="no">{"No"}</option>
+                                <option value="yes">{"כן"}</option>
+                                <option value="no">{"לא"}</option>
                             </select>
                         </Form.Field>
 
@@ -97,7 +97,7 @@ class AttendanceForm extends Component {
                                 color: "rgba(255, 255, 255, 0.85)",
                                 fontSize: "1.5rem"
                             }}>
-                                {"Number of adults"}
+                                {"מספר מבוגרים"}
                             </label>
                             <select
                                 disabled={ attending === "no" }
@@ -122,7 +122,7 @@ class AttendanceForm extends Component {
                                 color: "rgba(255, 255, 255, 0.85)",
                                 fontSize: "1.5rem"
                             }}>
-                                {"Number of children"}</label>
+                                {"מספר ילדים"}</label>
                             <select
                                 disabled={ attending === "no" }
                                 placeholder="Enter your age"
@@ -146,7 +146,7 @@ class AttendanceForm extends Component {
                             type="submit"
                             style={{fontSize: "1.2rem"}}
                         >
-                            {"Submit"}
+                            {"שלח"}
                         </Button>
                     </Form>
                 </section>
