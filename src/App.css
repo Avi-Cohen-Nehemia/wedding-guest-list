@@ -17,6 +17,7 @@ body::-webkit-scrollbar {
 
 .form{
   width: 500px;
+  padding: 1rem;
 }
 
 .container{

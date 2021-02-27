@@ -57,7 +57,7 @@ class AttendanceForm extends Component {
                         {"Register"}
                     </Button>
                 </section>
-                <section id="attendance-form">
+                <section>
                     <Form className="form" onSubmit={ this.handleSubmit }>
                         <Form.Field style={{ marginBottom: "2rem" }}>
                             <label style={{
