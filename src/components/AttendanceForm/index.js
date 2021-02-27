@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, Form } from "semantic-ui-react";
 import { animateScroll as scroll } from 'react-scroll'
+import Swal from "sweetalert2";
 import axios from "axios";
 
 class AttendanceForm extends Component {
@@ -29,8 +30,24 @@ class AttendanceForm extends Component {
         e.preventDefault();
 
         axios.post('https://sheet.best/api/sheets/58ada64d-79d4-4596-8b0a-2d6e76fcdaf3', this.state)
-        .then(response => {
-            console.log(response);
+        .then(() => {
+            Swal.fire({
+                icon: 'success',
+                title: 'הטופס נשלח בהצלחה',
+                text: 'תודה שאשרתם הגעתכם, אתם יכולים לסגור את הדפדפן',
+            });
+            this.setState = ({
+                attending: "yes",
+                name: "",
+                adults: "0",
+                children: "0",
+            });
+        }).catch(() => {
+            Swal.fire({
+                icon: 'error',
+                title: 'אופס...',
+                text: 'נסו שוב',
+            })
         })
     }
 
