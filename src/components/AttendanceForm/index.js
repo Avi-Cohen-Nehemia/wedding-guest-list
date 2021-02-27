@@ -52,6 +52,7 @@ class AttendanceForm extends Component {
                     <Button
                         className="register-btn"
                         onClick={() => scroll.scrollToBottom({duration: 2500, smooth: 'easeInOutQuad'})}
+                        style={{fontSize: "1.2rem"}}
                     >
                         {"Register"}
                     </Button>
@@ -59,7 +60,10 @@ class AttendanceForm extends Component {
                 <section id="attendance-form">
                     <Form className="form" onSubmit={ this.handleSubmit }>
                         <Form.Field style={{ marginBottom: "2rem" }}>
-                            <label style={{ color: "rgba(255, 255, 255, 0.8)" }}>
+                            <label style={{
+                                color: "rgba(255, 255, 255, 0.85)",
+                                fontSize: "1.5rem"
+                            }}>
                                 {"Full Name"}
                             </label>
                             <input
@@ -73,7 +77,12 @@ class AttendanceForm extends Component {
                         </Form.Field>
 
                         <Form.Field style={{ marginBottom: "2rem" }}>
-                            <label style={{color: "rgba(255, 255, 255, 0.8)"}}>{"Attending the wedding?"}</label>
+                            <label style={{
+                                color: "rgba(255, 255, 255, 0.85)",
+                                fontSize: "1.5rem"
+                            }}>
+                                {"Attending the wedding?"}
+                            </label>
                             <select
                                 required
                                 onChange={ (e) => this.handleChange(e, "attending")}
@@ -84,7 +93,12 @@ class AttendanceForm extends Component {
                         </Form.Field>
 
                         <Form.Field style={{ marginBottom: "2rem" }}>
-                            <label style={{color: "rgba(255, 255, 255, 0.8)"}}>{"Number of adults"}</label>
+                            <label style={{
+                                color: "rgba(255, 255, 255, 0.85)",
+                                fontSize: "1.5rem"
+                            }}>
+                                {"Number of adults"}
+                            </label>
                             <select
                                 disabled={ attending === "no" }
                                 placeholder="Enter your age"
@@ -104,7 +118,11 @@ class AttendanceForm extends Component {
                         </Form.Field>
 
                         <Form.Field style={{ marginBottom: "2rem" }}>
-                            <label style={{color: "rgba(255, 255, 255, 0.8)"}}>{"Number of children"}</label>
+                            <label style={{
+                                color: "rgba(255, 255, 255, 0.85)",
+                                fontSize: "1.5rem"
+                            }}>
+                                {"Number of children"}</label>
                             <select
                                 disabled={ attending === "no" }
                                 placeholder="Enter your age"
@@ -123,7 +141,13 @@ class AttendanceForm extends Component {
                             </select>
                         </Form.Field>
 
-                        <Button primary type="submit">{"Submit"}</Button>
+                        <Button
+                            primary
+                            type="submit"
+                            style={{fontSize: "1.2rem"}}
+                        >
+                            {"Submit"}
+                        </Button>
                     </Form>
                 </section>
             </div>
