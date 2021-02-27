@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Form, Container, Header } from "semantic-ui-react";
+import { Button, Form, Header } from "semantic-ui-react";
 import axios from "axios";
 
 class AttendanceForm extends Component {
@@ -41,6 +41,13 @@ class AttendanceForm extends Component {
         return (
             <div className="container">
                 <section>
+                <ul class="slideshow">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
                 </section>
                 <section>
                     <Header as="h2">{"Wedding Registration Form"}</Header>
