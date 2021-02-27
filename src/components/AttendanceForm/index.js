@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Button, Form, Header } from "semantic-ui-react";
+import { Button, Form } from "semantic-ui-react";
+import { animateScroll as scroll } from 'react-scroll'
 import axios from "axios";
 
 class AttendanceForm extends Component {
@@ -41,41 +42,49 @@ class AttendanceForm extends Component {
         return (
             <div className="container">
                 <section>
-                <ul class="slideshow">
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
+                    <ul className="slideshow">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    <Button
+                        className="register-btn"
+                        onClick={() => scroll.scrollToBottom({duration: 2500, smooth: 'easeInOutQuad'})}
+                    >
+                        {"Register"}
+                    </Button>
                 </section>
-                <section>
-                    <Header as="h2">{"Wedding Registration Form"}</Header>
+                <section id="attendance-form">
                     <Form className="form" onSubmit={ this.handleSubmit }>
-                        <Form.Field>
-                            <label>{"Full Name"}</label>
+                        <Form.Field style={{ marginBottom: "2rem" }}>
+                            <label style={{ color: "rgba(255, 255, 255, 0.8)" }}>
+                                {"Full Name"}
+                            </label>
                             <input
                                 placeholder="Enter your name"
                                 value={ name }
                                 onChange={ (e) => this.handleChange(e, "name") }
                                 type="text"
                                 required
+                                
                             />
                         </Form.Field>
 
-                        <Form.Field>
-                            <label>{"Attending the wedding?"}</label>
+                        <Form.Field style={{ marginBottom: "2rem" }}>
+                            <label style={{color: "rgba(255, 255, 255, 0.8)"}}>{"Attending the wedding?"}</label>
                             <select
                                 required
-                                onChange={ (e) => this.handleChange(e, "attending")
-                            }>
+                                onChange={ (e) => this.handleChange(e, "attending")}
+                            >
                                 <option value="yes">{"Yes"}</option>
                                 <option value="no">{"No"}</option>
                             </select>
                         </Form.Field>
 
-                        <Form.Field>
-                            <label>{"Number of adults"}</label>
+                        <Form.Field style={{ marginBottom: "2rem" }}>
+                            <label style={{color: "rgba(255, 255, 255, 0.8)"}}>{"Number of adults"}</label>
                             <select
                                 disabled={ attending === "no" }
                                 placeholder="Enter your age"
@@ -94,8 +103,8 @@ class AttendanceForm extends Component {
                             </select>
                         </Form.Field>
 
-                        <Form.Field>
-                            <label>{"Number of children"}</label>
+                        <Form.Field style={{ marginBottom: "2rem" }}>
+                            <label style={{color: "rgba(255, 255, 255, 0.8)"}}>{"Number of children"}</label>
                             <select
                                 disabled={ attending === "no" }
                                 placeholder="Enter your age"
