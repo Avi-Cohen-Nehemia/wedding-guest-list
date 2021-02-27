@@ -39,8 +39,11 @@ class AttendanceForm extends Component {
         const options = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
         return (
-            <Container fluid className="container">
-                <Header as="h2">{"Wedding Registration Form"}</Header>
+            <div className="container">
+                <section>
+                </section>
+                <section>
+                    <Header as="h2">{"Wedding Registration Form"}</Header>
                     <Form className="form" onSubmit={ this.handleSubmit }>
                         <Form.Field>
                             <label>{"Full Name"}</label>
@@ -106,7 +109,8 @@ class AttendanceForm extends Component {
 
                         <Button primary type="submit">{"Submit"}</Button>
                     </Form>
-            </Container>
+                </section>
+            </div>
         )
     }
 }
