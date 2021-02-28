@@ -1,9 +1,8 @@
 import React from "react";
-import PropTypes from 'prop-types';
 
-const Spinner = ({ stylingClasses }) => {
+const Spinner = () => {
     return (
-        <div className={ stylingClasses }>
+        <div>
             <div className="sk-fading-circle">
                 <div className="sk-circle1 sk-circle"></div>
                 <div className="sk-circle2 sk-circle"></div>
@@ -20,10 +19,6 @@ const Spinner = ({ stylingClasses }) => {
             </div>
         </div>
     );
-};
-
-Spinner.propTypes = {
-    stylingClasses: PropTypes.string.isRequired,
 };
 
 export default Spinner;

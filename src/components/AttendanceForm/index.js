@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, Form } from "semantic-ui-react";
 import { animateScroll as scroll } from 'react-scroll'
+import Spinner from "./../Spinner";
 import Swal from "sweetalert2";
 import axios from "axios";
 
@@ -84,6 +85,7 @@ class AttendanceForm extends Component {
                     </Button>
                 </section>
                 <section>
+                    { this.state.submitting ? <Spinner /> :
                     <Form className="form" onSubmit={ this.handleSubmit }>
                         <Form.Field style={{ marginBottom: "2rem" }}>
                             <label style={{
@@ -174,7 +176,7 @@ class AttendanceForm extends Component {
                         >
                             {"שלח"}
                         </Button>
-                    </Form>
+                    </Form> }
                 </section>
             </div>
         )
