@@ -20,6 +20,7 @@ class AttendanceForm extends Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSpinner = this.handleSpinner.bind(this);
     }
 
     handleChange(e, input) {
@@ -28,10 +29,13 @@ class AttendanceForm extends Component {
         this.setState({ [input]: value })
     }
 
+    handleSpinner() {
+        this.setState({ submitting: !this.state.submitting });
+    }
+
     handleSubmit(e) {
         e.preventDefault();
-
-        this.setState({ submitting: true });
+        this.handleSpinner();
 
         axios.post('https://sheet.best/api/sheets/58ada64d-79d4-4596-8b0a-2d6e76fcdaf3', this.state)
         .then(() => {
@@ -42,12 +46,12 @@ class AttendanceForm extends Component {
                 text: 'תודה שאשרתם הגעתכם, אתם יכולים לסגור את הדפדפן',
             });
 
-            this.setState = ({
+            this.handleSpinner();
+            this.setState({
                 attending: "yes",
                 name: "",
                 adults: "0",
                 children: "0",
-                submitting: false
             });
 
         }).catch(() => {
@@ -57,7 +61,7 @@ class AttendanceForm extends Component {
                 text: 'נסו שוב',
             });
 
-            this.setState({ submitting: false });
+            this.handleSpinner();
         });
     }
 
