@@ -14,6 +14,7 @@ class AttendanceForm extends Component {
             name: "",
             adults: "0",
             children: "0",
+            submitting: false
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -29,25 +30,33 @@ class AttendanceForm extends Component {
     handleSubmit(e) {
         e.preventDefault();
 
+        this.setState({ submitting: true });
+
         axios.post('https://sheet.best/api/sheets/58ada64d-79d4-4596-8b0a-2d6e76fcdaf3', this.state)
         .then(() => {
+
             Swal.fire({
                 icon: 'success',
                 title: 'הטופס נשלח בהצלחה',
                 text: 'תודה שאשרתם הגעתכם, אתם יכולים לסגור את הדפדפן',
             });
+
             this.setState = ({
                 attending: "yes",
                 name: "",
                 adults: "0",
                 children: "0",
+                submitting: false
             });
+
         }).catch(() => {
             Swal.fire({
                 icon: 'error',
                 title: 'אופס...',
                 text: 'נסו שוב',
-            })
+            });
+
+            this.setState({ submitting: false });
         });
     }
 
