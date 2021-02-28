@@ -48,7 +48,7 @@ class AttendanceForm extends Component {
                 title: 'אופס...',
                 text: 'נסו שוב',
             })
-        })
+        });
     }
 
     render() {
