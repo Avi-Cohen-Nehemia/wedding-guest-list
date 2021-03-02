@@ -60,7 +60,7 @@ section {
   background-repeat: no-repeat;
   opacity: 0;
   z-index: 0;
-  animation: imageAnimation 36s linear infinite; 
+  animation: imageAnimation 42s linear infinite; 
 }
 
 .slideshow li:nth-child(1) { 
@@ -85,6 +85,10 @@ section {
 .slideshow li:nth-child(6) { 
   background-image: url("./assets/images/dan-and-adi6.jpg");
   animation-delay: 30s; 
+}
+.slideshow li:nth-child(7) { 
+  background-image: url("./assets/images/dan-and-adi7.jpg");
+  animation-delay: 36s; 
 }
 
 @keyframes imageAnimation { 
