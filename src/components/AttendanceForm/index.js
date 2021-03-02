@@ -105,7 +105,6 @@ class AttendanceForm extends Component {
                                 {"שם מלא"}
                             </label>
                             <input
-                                placeholder="Enter your name"
                                 value={ name }
                                 onChange={ (e) => this.handleChange(e, "name") }
                                 type="text"
