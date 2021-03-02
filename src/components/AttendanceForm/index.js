@@ -25,8 +25,14 @@ class AttendanceForm extends Component {
 
     handleChange(e, input) {
         let value = e.currentTarget.value;
-
-        this.setState({ [input]: value })
+        this.setState({ [input]: value }, () => {
+            if (this.state.attending === "no") {
+                this.setState({
+                    adults: "0",
+                    children: "0"
+                });
+            }
+        });
     }
 
     handleSpinner() {
