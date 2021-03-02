@@ -60,27 +60,31 @@ section {
   background-repeat: no-repeat;
   opacity: 0;
   z-index: 0;
-  animation: imageAnimation 30s linear infinite; 
+  animation: imageAnimation 36s linear infinite; 
 }
 
 .slideshow li:nth-child(1) { 
-  background-image: url("./assets/images/wedding1.jpg") 
+  background-image: url("./assets/images/dan-and-adi1.jpg") 
 }
 .slideshow li:nth-child(2) { 
-  background-image: url("./assets/images/wedding2.jpg");
+  background-image: url("./assets/images/dan-and-adi2.jpg");
   animation-delay: 6s; 
 }
 .slideshow li:nth-child(3) { 
-  background-image: url("./assets/images/wedding3.jpg");
+  background-image: url("./assets/images/dan-and-adi3.jpg");
   animation-delay: 12s; 
 }
 .slideshow li:nth-child(4) { 
-  background-image: url("./assets/images/wedding4.jpg");
+  background-image: url("./assets/images/dan-and-adi4.jpg");
   animation-delay: 18s; 
 }
 .slideshow li:nth-child(5) { 
-  background-image: url("./assets/images/wedding5.jpg");
+  background-image: url("./assets/images/dan-and-adi5.jpg");
   animation-delay: 24s; 
+}
+.slideshow li:nth-child(6) { 
+  background-image: url("./assets/images/dan-and-adi6.jpg");
+  animation-delay: 30s; 
 }
 
 @keyframes imageAnimation { 

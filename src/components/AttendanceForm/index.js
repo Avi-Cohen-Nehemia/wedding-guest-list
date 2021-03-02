@@ -85,6 +85,7 @@ class AttendanceForm extends Component {
                         <li></li>
                         <li></li>
                         <li></li>
+                        <li></li>
                     </ul>
                     <Button
                         className="register-btn"
