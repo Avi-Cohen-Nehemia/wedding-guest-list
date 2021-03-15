@@ -18,7 +18,7 @@ class AttendanceForm extends Component {
     }
 
     componentDidMount() {
-        axios.get('https://sheet.best/api/sheets/58ada64d-79d4-4596-8b0a-2d6e76fcdaf3')
+        axios.get('https://sheet.best/api/sheets/4bfb956b-6832-4e1f-8195-35afc8ffe96a')
         .then((response) => {
             this.setState({ guestList: response.data })
         })
